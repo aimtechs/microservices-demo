@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.stream.Stream;
 
 
@@ -64,6 +66,8 @@ interface LotRepository extends JpaRepository<Lot, Long> {
 
 @Entity @Getter
 class Lot {
+  @Id
+  @GeneratedValue
   private Long id;
 
   private String lotName;
