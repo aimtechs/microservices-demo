@@ -1,5 +1,11 @@
 # microservices-demo
 
+## git download
+
+```bash
+git clone https://github.com/aimtechs/microservices-demo.git
+```
+
 ## config-service
 
 ```bash
