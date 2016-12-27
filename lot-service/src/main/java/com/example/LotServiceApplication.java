@@ -1,12 +1,12 @@
 package com.example;
 
-import com.netflix.discovery.converters.Auto;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -19,7 +19,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.stream.Stream;
 
-
+@EnableDiscoveryClient // eureka client 등록
 @SpringBootApplication
 public class LotServiceApplication {
 
@@ -56,6 +56,7 @@ class MessageRestController {
 
   @GetMapping("/message")
   String message() {
+    System.out.println("I'm called~");
     return this.message;
   }
 }
