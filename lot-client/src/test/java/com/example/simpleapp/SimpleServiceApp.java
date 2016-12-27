@@ -7,7 +7,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 이 테스트를 하기 위해서는 아래의 dependency를 제거 해야 함.
+ *
+ *
+ * 이 테스트를 하기 위해서는
+ * 1. src/main/resources/bootstrap.properties 파일 내용 주석 처리
+ * 2. 아래의 dependency를 제거 해야 함.
  *
  * 		<dependency>
  <groupId>org.springframework.cloud</groupId>
