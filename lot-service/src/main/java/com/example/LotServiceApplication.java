@@ -1,6 +1,7 @@
 package com.example;
 
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -18,6 +19,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.stream.Stream;
+
+@RepositoryRestResource
+interface LotRepository extends JpaRepository<Lot, Long> {
+}
 
 @EnableDiscoveryClient // eureka client 등록
 @SpringBootApplication
@@ -46,7 +51,9 @@ class SampleData implements CommandLineRunner {
   }
 }
 
-@RestController @RefreshScope
+@RestController
+@RefreshScope
+@Slf4j
 class MessageRestController {
   private final String message;
 
@@ -56,16 +63,13 @@ class MessageRestController {
 
   @GetMapping("/message")
   String message() {
-    System.out.println("I'm called~");
+    log.debug("i'm called. {}", this.message);
     return this.message;
   }
 }
 
-@RepositoryRestResource
-interface LotRepository extends JpaRepository<Lot, Long> {
-}
-
-@Entity @Getter
+@Entity
+@Getter
 class Lot {
   @Id
   @GeneratedValue
