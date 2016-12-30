@@ -6,15 +6,6 @@
 git clone https://github.com/aimtechs/microservices-demo.git
 ```
 
-## config-service
-
-```bash
-cd confing-service
-mvn -DskipTests clean package
-java -jar target/config-service-0.0.1-SNAPSHOT.jar
-```
-http://localhost:8888
-
 ## eureka-service
 
 ```bash
@@ -24,7 +15,15 @@ java -Dspring.profiles.active=peer1 -jar target/eureka-service-0.0.1-SNAPSHOT.ja
 java -Dspring.profiles.active=peer2 -jar target/eureka-service-0.0.1-SNAPSHOT.jar
 ```
 
-http://localhost:8761
+<http://localhost:8761>
+
+## config-service
+
+```bash
+cd confing-service
+mvn -DskipTests clean package
+java -jar target/config-service-0.0.1-SNAPSHOT.jar
+```
 
 ## lot-service
 
@@ -43,12 +42,15 @@ mvn -DskipTests clean package
 java -jar target/lot-client-0.0.1-SNAPSHOT.jar 
 ```
 
-http://localhost:9999/names
-http://localhost:9999/message
+<http://localhost:9999/names>
+
+<http://localhost:9999/message>
 
 
 ## config refresh test
 
 lot-service.yml  파일내 message 내용 수정 후
 
-curl -X POST http://localhost:PORT/refresh
+```bash
+curl -X POST http://{IP}:{PORT}/refresh
+```
